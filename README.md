@@ -193,7 +193,6 @@ echo 3 > /proc/sys/vm/drop_caches
 # dd if=05-aboot.img of=signature.bin bs=1 count=256 skip=$(od -A d -t x4 05-aboot.img | awk --non-decimal-data '/^0000016/ { i=sprintf("%d\n","0x"$3); print (i+40)}')
 
 # extract base aboot image
-# 40 - aboot header size, refer to: https://android.googlesource.com/kernel/lk/+/caf/master/target/msm8226/tools/mkheader.c#160
 # dd if=05-aboot.img of=aboot-base.img bs=1 count=$(od -A d -t x4 05-aboot.img | awk --non-decimal-data '/^0000016/ { i=sprintf("%d\n","0x"$3); print (i)}') skip=40
 # how sha256 was calculated?
 # openssl dgst -sha256 -sign private_key -out signature.bin aboot-base.img ?
