@@ -26,7 +26,6 @@ bin/run-as = cap_setgid,cap_setuid+ep
 adbd и консоль
 $ capsh --decode=0000001fffffffff
 
-Текущий SELinux context можно просмотреть командой id или cat /proc/self/attr/current. Предыдущий контекст процесса можно просмотреть командой cat /proc/self/attr/prev.
 
 
 Просмотр context'а файлов: ls -Z
@@ -64,8 +63,6 @@ $ sesearch --allow sepolicy | grep 'load_policy'
 
 
 adb shell run-as /data/local/tmp/run -u system -c u:r:init:s0 load_policy /data/local/tmp/sepolicy.new
-
-Можно было добавить любой permissive домен, загрузить новую политику и работать в контексте этого домена (кстати, supersu от chainfire для новых версий Android так и работает). Но даже это не дало возможности отключить SELinux. Я решил копать в другом направлении.
 
 
 Копаем recovery
